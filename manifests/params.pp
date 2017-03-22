@@ -13,6 +13,11 @@ class dbus::params {
   $validate           = false # xmllint currently can't fetch a DTD over HTTPS
 
   case $::osfamily {
+    'Archlinux': {
+      $service_name = 'dbus'
+      $session_conf = "${conf_dir}/session.conf"
+      $system_conf  = "${conf_dir}/system.conf"
+    }
     'RedHat': {
       case $::operatingsystemmajrelease {
         '5', '6': {
